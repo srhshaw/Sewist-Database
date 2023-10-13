@@ -15,7 +15,8 @@ The Sewist Database will be a personal respository application containing docume
 <h2>Stretch Goals</h2>
 - User-input images<br>
 - User ability to tie multiple materials and/or patterns to a single project<br>
-- Sorting capabilities<br>
+- Sorting capabilities (by date added, type)<br>
+- Advance CSS styling
 
 <h2>Entity Relationship Diagram</h2>
 <a href="https://lucid.app/lucidchart/6627721e-7929-40e0-a2a9-651570643368/edit?viewport_loc=-197%2C157%2C1597%2C791%2C0_0&invitationId=inv_5dce1b44-fd7c-42a4-9f07-1e24604e1d04">Sewist Database Lucid ERD</a>
