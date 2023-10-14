@@ -1,0 +1,19 @@
+{
+  "name": "sewist-database",
+  "version": "1.0.0",
+  "description": "<h2>User Story</h2> As a sewist I want to be able to see my planned projects and on-hand materials in one place in an organized, easy-to-access way.  This will create a record of my want-to-make projects and aggregate my materials so that I can either select from the patterns and materials I already have or make concious purchases of what I truly need.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.2",
+    "nodemon": "^3.0.1"
+  }
+}
