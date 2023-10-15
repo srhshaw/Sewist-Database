@@ -6,8 +6,8 @@ const materialSchema = new Schema(
     {
         name: {type: String, required: true},
         woven: {type: Boolean, required: true},
-        length: {type: Number},
-        width: {type: Number},
+        lengthInYds: {type: Number},
+        widthInInches: {type: Number},
     },
     {timestamps: true},
 )

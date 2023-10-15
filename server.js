@@ -14,26 +14,26 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
-//PATTERNS
-    app.get('/patterns', sewingController.getAllPatterns)
-    app.get('/patterns/:id', sewingController.getOnePattern)
-    app.post('/patterns', sewingController.createPattern)
-    app.put('/patterns/:id', sewingController.updatePattern)
-    app.delete('/patterns/:id', sewingController.deletePattern)
-
 //MATERIALS
-    app.get('/materials', sewingController.getAllMaterials)
-    app.get('/materials/:id', sewingController.getOneMaterial)
-    app.post('/materials', sewingController.createMaterial)
-    app.put('/materials/:id', sewingController.updatePattern)
-    app.delete('/materials/:id', sewingController.deletePattern)
+app.get('/materials', sewingController.getAllMaterials)
+app.get('/materials/:id', sewingController.getOneMaterial)
+app.post('/materials', sewingController.createMaterial)
+app.put('/materials/:id', sewingController.updateMaterial)
+app.delete('/materials/:id', sewingController.deleteMaterial)
+
+//PATTERNS
+app.get('/patterns', sewingController.getAllPatterns)
+app.get('/patterns/:id', sewingController.getOnePattern)
+app.post('/patterns', sewingController.createPattern)
+app.put('/patterns/:id', sewingController.updatePattern)
+app.delete('/patterns/:id', sewingController.deletePattern)
 
 //PROJECTS
-    app.get('/projects', sewingController.getAllProjects)
-    app.get('/projects/:id', sewingController.getOneProject)
-    app.post('/projects', sewingController.createProject)
-    app.put('/projects/:id', sewingController.updateProject)
-    app.delete('/projects/:id', sewingController.deleteProject)
+app.get('/projects', sewingController.getAllProjects)
+app.get('/projects/:id', sewingController.getOneProject)
+app.post('/projects', sewingController.createProject)
+app.put('/projects/:id', sewingController.updateProject)
+app.delete('/projects/:id', sewingController.deleteProject)
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
