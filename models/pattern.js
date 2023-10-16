@@ -8,7 +8,7 @@ const patternSchema = new Schema(
         name_no: {type: String, required: true},
         description: {type: String, required:true},
         adultSize: {type: Boolean, required: true},
-        woven_required: {type: Boolean, required: true},
+        woven_required: {type: Boolean, required: true}
     },
     {timestamps: true},
 )

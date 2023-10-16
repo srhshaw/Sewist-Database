@@ -5,8 +5,8 @@ const {Schema} = require('mongoose')
 const projectSchema = new Schema(
     {
         name: {type: String, required: true},
-        pattern: {type: Schema.Types.ObjectId, ref: 'Pattern'},
-        material: {type: Schema.Types.ObjectId, ref: 'Material'},
+        pattern: [{type: Schema.Types.ObjectId, ref: 'Pattern'}],
+        material: [{type: Schema.Types.ObjectId, ref: 'Material'}]
     },
     {timestamps: true},
 )

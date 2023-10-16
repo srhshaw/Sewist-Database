@@ -1,6 +1,6 @@
-const {Material} = require('../models/material')
-const {Pattern} = require('../models/pattern')
-const {Project} = require('../models/project')
+const Material = require('../models/material')
+const Pattern = require('../models/pattern')
+const Project = require('../models/project')
 
 module.exports = {
     getAllMaterials, getOneMaterial, createMaterial, updateMaterial, deleteMaterial, getAllPatterns, getOnePattern, createPattern, updatePattern, deletePattern, getAllProjects, getOneProject, createProject, updateProject, deleteProject,
@@ -9,7 +9,7 @@ module.exports = {
 //MATERIAL
 async function getAllMaterials(req, res) {
     try {
-        const materials = await material.find()
+        const materials = await Material.find()
         res.json(materials)
     } catch (erro){
         return res.status(500).send(error.message)
@@ -19,7 +19,7 @@ async function getAllMaterials(req, res) {
 async function getOneMaterial(req, res){
     try{
         const id = req.params.id
-        const material = await material.findById(id)
+        const material = await Material.findById(id)
         if (material) {
             return res.json(material)
         }

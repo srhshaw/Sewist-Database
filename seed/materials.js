@@ -1,7 +1,8 @@
 const db = require('../db')
-const {Material} = require('../models/material')
+const Material = require('../models/material')
 
-db.on('error', console.error.bind(console, 'MondoDB Connection error:'))
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
 
 const main = async () => {
     const materials = [
@@ -77,9 +78,9 @@ const main = async () => {
         lengthInYds: 2.5,
         widthInInches: 54,
         },
-]
-await Material.insertMany(materials)
-console.log('Created some materials!')
+    ]
+    await Material.insertMany(materials)
+    console.log('Created some materials!')
 }
 
 const run = async () => {
