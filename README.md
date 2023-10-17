@@ -22,4 +22,10 @@ The Sewist Database will be a personal respository application containing docume
 <a href="https://lucid.app/lucidchart/6627721e-7929-40e0-a2a9-651570643368/edit?viewport_loc=-197%2C157%2C1597%2C791%2C0_0&invitationId=inv_5dce1b44-fd7c-42a4-9f07-1e24604e1d04">Sewist Database Lucid ERD</a>
 
 <h2>Wireframe</h2>
-<a href="https://drive.google.com/file/d/1k4cnxTg7zqk-0j6WqDV4cZa726x50a8J/view?usp=sharing">Drawio Wireframe</a>
+<a href= "https://drive.google.com/file/d/1fDlrxvwVpeLG31UmrsBubFDZ_Muy6kAe/view?usp=sharing">Homepage Wireframe</a>
+
+<a href="https://drive.google.com/file/d/1k4cnxTg7zqk-0j6WqDV4cZa726x50a8J/view?usp=sharing">Model Index Route Page Wireframe</a>
+
+<a href="https://drive.google.com/file/d/1KJA4DrTqZxhDwagDJmUck9i3JzzAkL7C/view?usp=sharing">Create Document Layout</a>
+
+<a href="https://drive.google.com/file/d/1sV8Q7y9tfunCjp4aKoRbu4ljy-0kvvgI/view?usp=sharing">Get One-Update-Delete Document Layout</a>

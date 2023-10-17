@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./script.js" type="module" diff></script>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./getAllStyle.css" />
     <title>Stash Sewing Database</title>
 </head>
 
 <body>
     <header>
-        <h3>Welcome to your</h3>
         <h1>Stash</h1>
+        <ul class="navMain">
+            <li class="navItem">Material</li>
+            <li class="navItem">Patterns</li>
+            <li class="navItem">Projects</li>
+        </ul>
     </header>
     <main>
-        <div class="image-container" id="images">
-            <a href = "./getAllPage/getAll.html"><img id="materials" src="./assets/Material Icon.jpg"/></a>
-            <img id="patterns" src="./assets/Pattern Icon.jpg" />
-            <img id="projects" src="./assets/Project Icon.jpg" />
+        <div class="addButton">
+            <button>Add New</button>
         </div>
+        <table>
+            <!-- Is a table the right way to make cards? -->
+        </table>
     </main>
 </body>
 </html>
