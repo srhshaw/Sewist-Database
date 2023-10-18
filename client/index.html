@@ -10,16 +10,39 @@
 </head>
 
 <body>
-    <header>
-        <h3>Welcome to your</h3>
-        <h1>Stash</h1>
-    </header>
-    <main>
-        <div class="image-container" id="images">
-            <a href = "./getAllPage/getAll.html"><img id="materials" src="./assets/Material Icon.jpg"/></a>
-            <img id="patterns" src="./assets/Pattern Icon.jpg" />
-            <img id="projects" src="./assets/Project Icon.jpg" />
+    <div class = "home">
+        <header class = "home_header">
+            <h3>Welcome to your</h3>
+            <h1>Stash</h1>
+        </header>
+            <div class= "home-image-container" id = "home_images">
+                <!-- <a href = "./getAllPage/getAll.html"> -->
+                    <img id="materials" src="./assets/Material Icon.jpg"/>
+                <!-- </a> -->
+                <img id="patterns" src="./assets/Pattern Icon.jpg" />
+                <img id="projects" src="./assets/Project Icon.jpg" />
+            </div>
+    </div>
+
+    <div class = "getAll">
+        <header class = "getAll_header">
+            <h1>Stash</h1>
+            <ul class="navMain">
+                <li class="navItem">Material</li>
+                <li class="navItem">Patterns</li>
+                <li class="navItem">Projects</li>
+            </ul>
+        </header>
+        <div class= "getAll_main">
+            <div class="addButton">
+                <button id = "getAll_add_button">Add New</button>
+            </div>
+            <div id="table-container">
+                <!-- <table id="cards">
+                
+                </table> -->
+            </div> 
         </div>
-    </main>
+    </div>
 </body>
 </html>

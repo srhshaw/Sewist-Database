@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: ivory;
 }
 header {
@@ -32,3 +32,8 @@ button{
     height: 40px;
     font-size: 17px;
 }
+
+
+#hidden{
+    display: none;
+} */
