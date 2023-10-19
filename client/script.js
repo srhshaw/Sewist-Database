@@ -4,8 +4,11 @@ const stashCollection = document.getElementById("table-container");
 
 let stashString = "";
 
+//HIDE 'GET ALL' & 'CREATE NEW' PAGE HTML
 document.querySelector(".getAll").style.display = "none"
+document.querySelector(".createNewMaterialForm").style.display = "none"
 
+//EVENT LISTENER TO RECORD USER-SELECTED PATH AND CALL THAT PATH'S FUNCTION
 document.querySelector(".home-image-container").onclick = function(e) {
     let pathChosen = e.target.id
     console.log(pathChosen)
@@ -18,21 +21,22 @@ document.querySelector(".home-image-container").onclick = function(e) {
     }
 }
 
+//GET ALL PATTERNS
 function getAllPatternsPage(path) {
     console.log(path);
-//NEED HOMEPAGE HTML TO GO HIDDEN
+    //HIDE HOMEPAGE HTML
     document.querySelector(".home").style.display = "none"
 
-//NEED GETALL HTML TO GO UNHIDDEN
+    //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
 
-//NEED TO MAKE AXIOS CALL TO DB TO RETRIEVE E.TARGET.ID RECORDS
+    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (E.TARGET.ID) RECORDS
     getRecords(path)
     async function getRecords(route) {
         let records = await axios.get(`${BASE_URL}/${route}`)
         console.log(records)
 
-//DISPLAY RECORDS BY ADDING TO HTML.  WORK ON CSS.
+        //LOOP OVER PATTERN RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
         records.data.forEach(record => {
             console.log(record)
             stashString +=
@@ -63,21 +67,23 @@ function getAllPatternsPage(path) {
     }
 }
 
+//GET ALL MATERIALS
 function getAllMaterialsPage(path) {
     console.log(path);
-//NEED HOMEPAGE HTML TO GO HIDDEN
+
+    //HIDE HOMEPAGE & 'CREATE NEW' HTML
     document.querySelector(".home").style.display = "none"
 
-//NEED GETALL HTML TO GO UNHIDDEN
+    //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
 
-//NEED TO MAKE AXIOS CALL TO DB TO RETRIEVE E.TARGET.ID RECORDS
+    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (E.TARGET.ID) RECORDS
     getRecords(path)
     async function getRecords(route) {
         let records = await axios.get(`${BASE_URL}/${route}`)
         console.log(records)
 
-//DISPLAY RECORDS BY ADDING TO HTML.  WORK ON CSS.
+        //LOOP OVER MATERIALS RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
         records.data.forEach(record => {
             console.log(record)
             stashString +=
@@ -96,38 +102,92 @@ function getAllMaterialsPage(path) {
                     </tr>
                     <tr>
                         <td> <b>Width (inches):</b> </td>
-                        <td> ${record.adultSize} </td>
+                        <td> ${record.widthInInches} </td>
                     </tr>
                 </table>`
             stashCollection.innerHTML = stashString
         })
     }
 }
+    //EVENT LISTENER ON 'ADD NEW' BUTTON
+    document.querySelector("#getAll_add_button").onclick = 
+        function createNewMaterial() {
 
+        //HIDE HOMEPAGE & 'GET ALL' HTML
+        document.querySelector(".home").style.display = "none"
+        document.querySelector(".getAll").style.display = "none"
+
+        //DISPLAY 'CREATE NEW' HTML
+        document.querySelector(".createNewMaterialForm").style.display = "block"
+        }
+
+
+        //**TESTING HOW FORM RECORDS INPUTS */
+        // let descInput = document.getElementById('desc')
+        // let wovenInput = document.getElementById('material_type')
+        // let lengthInput = document.getElementById('length')
+        // let widthInput = document.getElementById('width')
+        // document.querySelector('form.new_records_data_input').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     console.log(descInput.value)
+        //     console.log(wovenInput.value)
+        //     console.log(lengthInput.value)
+        //     console.log(widthInput.value)
+        // })
+        
+        // document.querySelector("#create_material").onclick =
+        //     function sendNewMaterialInput(){
+        //         console.log()
+        //     }
+            
+
+    
+     //EVENT LISTENER ON MATERIALS TABLE
+     //document.querySelector(".records_data").style.color="red"
+     // document.querySelector(".records_data").onclick = function(e) {
+     //     console.log("click")
+         // let materialIdChosen = e.target
+         // console.log(materialIdChosen)
+     // }
+
+
+
+//GET ALL PROJECTS
 function getAllProjectsPage(path) {
     console.log(path);
-//NEED HOMEPAGE HTML TO GO HIDDEN
+
+    //HIDE HOMEPAGE HTML
     document.querySelector(".home").style.display = "none"
 
-//NEED GETALL HTML TO GO UNHIDDEN
+    //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
 
-//NEED TO MAKE AXIOS CALL TO DB TO RETRIEVE E.TARGET.ID RECORDS
+    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (E.TARGET.ID) RECORDS
     getRecords(path)
     async function getRecords(route) {
         let records = await axios.get(`${BASE_URL}/${route}`)
         let materialsRecords = await axios.get(`${BASE_URL}/materials`)
+        let patternsRecords = await axios.get(`${BASE_URL}/patterns`)
         
         console.log(records)
         console.log(materialsRecords)
 
-//DISPLAY RECORDS BY ADDING TO HTML.  WORK ON CSS.
+        //LOOP OVER PROJECTS RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
         records.data.forEach(record => {
             console.log(record)
-            let id = (`${record.material}`)
-            const materialObject = materialsRecords.data.find((element) => element._id === id)
+
+            //FUNCTIONS TO RETRIEVE PATTERN & MATERIAL NAMES FOR DISPLAY BY THE OBJECT ID'S STORED IN THE PROJECT DOCUMENTS
+            let patternId = (`${record.pattern}`)
+            let materialId = (`${record.material}`)
+            
+            const patternObject = patternsRecords.data.find((element) => element._id === patternId)
+            if (patternObject) { 
+            let patternName = patternObject.name_no
+
+            const materialObject = materialsRecords.data.find((element) => element._id === materialId)
             if (materialObject) { 
             let materialName = materialObject.name
+
             stashString +=
                 `<table class = "records_data">
                     <tr>
@@ -136,7 +196,7 @@ function getAllProjectsPage(path) {
                     </tr>
                     <tr>
                         <td> <b>Pattern:</b> </td>
-                        <td> ${record.pattern} </td>
+                        <td> ${patternName} </td>
                     </tr>
                     <tr>
                         <td> <b>Material:</b> </td>
@@ -144,7 +204,7 @@ function getAllProjectsPage(path) {
                     </tr>
                 </table>`
             stashCollection.innerHTML = stashString
-            }
+            }}
         })
     }
 }

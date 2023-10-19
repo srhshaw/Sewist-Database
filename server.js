@@ -3,6 +3,7 @@ const db = require('./db')
 const cors = require('cors')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const sewingController = require('./controllers/sewingController')
 
@@ -10,9 +11,11 @@ const PORT = process.env.PORT || 3001
 
 const app = express()
 
+app.use(methodOverride("_method"))
 app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 //MATERIALS
 app.get('/materials', sewingController.getAllMaterials)

@@ -11,7 +11,7 @@ async function getAllMaterials(req, res) {
     try {
         const materials = await Material.find()
         res.json(materials)
-    } catch (erro){
+    } catch (error){
         return res.status(500).send(error.message)
     }
 }
@@ -30,6 +30,7 @@ async function getOneMaterial(req, res){
 }
 
 async function createMaterial(req,res){
+    console.log("create material")
     try{
         const material = await new Material(req.body)
         await material.save()

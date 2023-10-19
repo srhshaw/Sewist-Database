@@ -87,3 +87,27 @@ td{
 #hidden{
     display: none;
 }
+
+.createNewMaterialForm{
+    display: flex;
+    justify-content: center;
+    border: solid 2px;
+    width: 300px;
+    height:300px;
+    margin: 100px auto;
+    align-content: center;
+    background-color: white;
+}
+li{
+    align-items: center;
+    list-style-type: none;
+}
+
+#new_record_header{
+    text-align: center;
+}
+#create_material{
+    padding: 5px;
+    margin: 15px auto;
+    width: 75px;
+}

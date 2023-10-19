@@ -38,11 +38,42 @@
                 <button id = "getAll_add_button">Add New</button>
             </div>
             <div id="table-container">
-                <!-- <table id="cards">
+                <!-- <table>
                 
                 </table> -->
             </div> 
+            
         </div>
     </div>
+
+    <div class = "createNewMaterialForm">
+        <form method= "POST" action= "http://localhost:3001/materials" class = "new_records_data_input">
+            <h2 id="new_record_header">Create New Record</h2>
+            <ul>
+                <li>
+                    <label for="desc"><b>Description:</b> </label><br>
+                    <input type="text" id="desc" name="name"><br>
+                </li>
+                <li>
+                    <label for="material_type"><b>Fabric Type:</b> </label><br>
+                    <input type="radio" id="material_type" name="woven" value="true">Woven<br>
+                    <input type="radio" id="material_type" name="woven" value="false">Knit<br>
+                </li>
+                <li>
+                    <label for="length"><b>Length (yds):</b> </label><br>
+                    <input type="number" id="length" name="lengthInYds"><br>
+                </li>
+                <li>
+                    <label for="width"><b>Width (inches):</b> </label><br>
+                    <input type="number" id="width" name="widthInInches"><br>
+                </li>
+                <li>
+                    <button type="submit" id = "create_material">Submit</button>
+                </li>
+            </ul>
+        </form>
+            
+    </div>
+
 </body>
 </html>
