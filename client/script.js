@@ -2,11 +2,21 @@
 const BASE_URL = "http://localhost:3001";
 const stashCollection = document.getElementById("table-container");
 
-let stashString = "";
+//UPDATE FORM DOM VARIABLES
+const matUpdateDesc = document.getElementById("editDescription");          
+const matUpdateWoven = document.getElementById("woven");
+const matUpdateLength = document.getElementById("lengthInYds")
+const matUpdateWidth = document.getElementById("widthInInches");
 
-//HIDE 'GET ALL' & 'CREATE NEW' PAGE HTML
+let stashString = "";
+let materials = "";
+let selectedRecord ="";
+
+//HIDE 'GET ALL','CREATE NEW', & 'EDIT' PAGE HTML
 document.querySelector(".getAll").style.display = "none"
 document.querySelector(".createNewMaterialForm").style.display = "none"
+document.querySelector(".edit").style.display = "none"
+document.querySelector(".home").style.display = "block"
 
 //EVENT LISTENER TO RECORD USER-SELECTED PATH AND CALL THAT PATH'S FUNCTION
 document.querySelector(".home-image-container").onclick = function(e) {
@@ -23,14 +33,16 @@ document.querySelector(".home-image-container").onclick = function(e) {
 
 //GET ALL PATTERNS
 function getAllPatternsPage(path) {
-    console.log(path);
-    //HIDE HOMEPAGE HTML
+
+    //HIDE HOMEPAGE,EDIT, & CREATE NEW RECORD HTML
     document.querySelector(".home").style.display = "none"
+    document.querySelector(".edit").style.display = "none"
+    document.querySelector(".createNewMaterialForm").style.display = "none"
 
     //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
 
-    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (E.TARGET.ID) RECORDS
+    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (PATTERN) RECORDS
     getRecords(path)
     async function getRecords(route) {
         let records = await axios.get(`${BASE_URL}/${route}`)
@@ -61,6 +73,9 @@ function getAllPatternsPage(path) {
                         <td> <b>Wovens Required:</b> </td>
                         <td> ${record.woven_required} </td>
                     </tr>
+                    <tr>
+                        <td><button>Edit</button></td>
+                    </tr>
                 </table>`
             stashCollection.innerHTML = stashString
         })
@@ -69,22 +84,22 @@ function getAllPatternsPage(path) {
 
 //GET ALL MATERIALS
 function getAllMaterialsPage(path) {
-    console.log(path);
 
-    //HIDE HOMEPAGE & 'CREATE NEW' HTML
+    //HIDE HOMEPAGE, 'EDIT', &'CREATE NEW' HTML
     document.querySelector(".home").style.display = "none"
+    document.querySelector(".edit").style.display = "none"
+    document.querySelector(".createNewMaterialForm").style.display = "none"
 
     //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
 
-    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (E.TARGET.ID) RECORDS
+    //PLACE AXIOS CALL TO DB TO RETRIEVE USER-SELECTED (MATERIALS) RECORDS
     getRecords(path)
     async function getRecords(route) {
-        let records = await axios.get(`${BASE_URL}/${route}`)
-        console.log(records)
-
+        materials = await axios.get(`${BASE_URL}/${route}`)
+ 
         //LOOP OVER MATERIALS RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
-        records.data.forEach(record => {
+        materials.data.forEach(record => {
             console.log(record)
             stashString +=
                 `<table class = "records_data">
@@ -104,60 +119,115 @@ function getAllMaterialsPage(path) {
                         <td> <b>Width (inches):</b> </td>
                         <td> ${record.widthInInches} </td>
                     </tr>
+                    <tr>
+                        <td><button id = ${record._id}>Edit</button></td>
+                    </tr>
                 </table>`
             stashCollection.innerHTML = stashString
         })
+    return materials
     }
 }
     //EVENT LISTENER ON 'ADD NEW' BUTTON
     document.querySelector("#getAll_add_button").onclick = 
         function createNewMaterial() {
 
-        //HIDE HOMEPAGE & 'GET ALL' HTML
+        //HIDE HOMEPAGE, EDIT, & 'GET ALL' HTML
         document.querySelector(".home").style.display = "none"
         document.querySelector(".getAll").style.display = "none"
+        document.querySelector(".edit").style.display = "none"
 
         //DISPLAY 'CREATE NEW' HTML
         document.querySelector(".createNewMaterialForm").style.display = "block"
         }
 
+        //NEW RECORD DATA IS INPUT & SEND TO DB VIA HTML FORM.  BELOW EVENT LISTENER CONFIRMS RECORD CREATED IN BROWSER AND RETURNS TO 'GET ALL' PAGE HTML.
+        document.querySelector("#create_material").onclick = function confirmCreate() {
+            alert("Record created.")
 
-        //**TESTING HOW FORM RECORDS INPUTS */
-        // let descInput = document.getElementById('desc')
-        // let wovenInput = document.getElementById('material_type')
-        // let lengthInput = document.getElementById('length')
-        // let widthInput = document.getElementById('width')
-        // document.querySelector('form.new_records_data_input').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-        //     console.log(descInput.value)
-        //     console.log(wovenInput.value)
-        //     console.log(lengthInput.value)
-        //     console.log(widthInput.value)
-        // })
-        
-        // document.querySelector("#create_material").onclick =
-        //     function sendNewMaterialInput(){
-        //         console.log()
-        //     }
-            
+            document.querySelector(".getAll").style.display = "block"
+            document.querySelector(".home").style.display = "none"
+            document.querySelector(".edit").style.display = "none"
+            document.querySelector(".createNewMaterialForm").style.display = "none"
+        }
 
-    
-     //EVENT LISTENER ON MATERIALS TABLE
-     //document.querySelector(".records_data").style.color="red"
-     // document.querySelector(".records_data").onclick = function(e) {
-     //     console.log("click")
-         // let materialIdChosen = e.target
-         // console.log(materialIdChosen)
-     // }
+     //EVENT LISTENER ON MATERIALS TABLES DIV TO RECORD ID OF MATERIAL RECORD CLICKED BY USER
+    document.querySelector(`#table-container`).onclick = function(e) {
+        console.log("click")
+        let lastClickedRecordId = e.target.id
+        console.log(lastClickedRecordId)
 
+        //VARIABLE WILL NOT HOLD THE RECORD ID DUE TO EVENT LISTENER ELEMENT ID CONFLICTS WHICH CANNOT BE RESOLVED WITHOUT DETRIMENT.  THIS FUNCTION USES THE VARIABLE TO FIND THE RECORD MATCHING THE ID FOR USE IN THE CODE.  
+        materials.data.forEach(record => {
+            if (record._id === lastClickedRecordId) {
+                selectedRecord =record
+                return selectedRecord
+            }
+        })
 
+        //HIDE HOMEPAGE, EDIT & 'GET ALL' HTML
+        document.querySelector(".home").style.display = "none"
+        document.querySelector(".getAll").style.display = "none"
+        document.querySelector(".createNewMaterialForm").style.display = "none"
+
+        //DISPLAY 'UPDATE/DELETE' HTML
+        document.querySelector(".edit").style.display = "block"
+
+        //POPULATE EXISTING DOCUMENT DATA TO BROWSER FOR USER EDITING
+        matUpdateDesc.innerText = selectedRecord.name
+        matUpdateWoven.innerText = selectedRecord.woven
+        matUpdateLength.innerText = selectedRecord.lengthInYds
+        matUpdateWidth.innerText = selectedRecord.widthInInches
+
+        //EVENT LISTENER ON UPDATE FORM "SUBMIT UPDATE" BUTTON
+        document.querySelector("#submitUpdate").onclick = function submitUpdate(){
+
+            //VARIABLE TO SAVE THE UPDATED INNER HTML TEXT IN OBJECT FORMAT REQUIRED BY AXIOS PUT CALL
+            let matDocUpdate = {
+                name: `${matUpdateDesc.innerText}`,
+                woven: `${matUpdateWoven.innerText}`,
+                lengthInYds: `${matUpdateLength.innerText}`,
+                widthInInches: `${matUpdateWidth.innerText}`,
+            }
+
+            //FUNCTION TO MAKE AXIOS PUT CALL PASSING IN THE RECORD(ID) AND VARIABLE HOLDING VALUES TO UPDATE
+            updateDocument(selectedRecord, matDocUpdate);
+            async function updateDocument(record, updateObject) {
+                await axios.put(`${BASE_URL}/materials/${record._id}`, updateObject)}
+                alert("Update confirmed.")
+
+                //SHOW GET ALL PAGE HTML.  HIDE HOMEPAGE, EDIT & 'GET ALL' HTML.
+                document.querySelector(".getAll").style.display = "block"
+                document.querySelector(".edit").style.display = "none"
+                document.querySelector(".home").style.display = "none"
+                document.querySelector(".createNewMaterialForm").style.display = "none"
+
+                getAllPatternsPage("materials")
+        }
+
+        //EVENT LISTENER FOR DELETE BUTTON.  SENDS CONFIRMATION POPUP.  IF CONFIRMED, EXECUTES AXIOS DELETE CALL PASSING IN RECORD(ID).
+        document.querySelector("#delete").onclick = function deleteRecord(){
+            if (confirm("Are you sure you want to delete this record?")){
+                deleteDocument(selectedRecord)
+                async function deleteDocument(record) { 
+                    await axios.delete(`${BASE_URL}/materials/${record._id}`)}
+                
+                //SHOW GET ALL PAGE HTML.  HIDE HOMEPAGE, EDIT & 'GET ALL' HTML.
+                document.querySelector(".edit").style.display = "none"
+                document.querySelector(".home").style.display = "none"
+                document.querySelector(".createNewMaterialForm").style.display = "none"
+                document.querySelector(".getAll").style.display = "block"
+            }
+        }
+    }
 
 //GET ALL PROJECTS
 function getAllProjectsPage(path) {
-    console.log(path);
 
     //HIDE HOMEPAGE HTML
     document.querySelector(".home").style.display = "none"
+    document.querySelector(".edit").style.display = "none"
+    document.querySelector(".createNewMaterialForm").style.display = "none"
 
     //DISPLAY 'GET ALL' HTML
     document.querySelector(".getAll").style.display = "block"
@@ -202,9 +272,19 @@ function getAllProjectsPage(path) {
                         <td> <b>Material:</b> </td>
                         <td> ${materialName} </td>
                     </tr>
+                    <tr>
+                        <td><button>Edit</button></td>
+                    </tr>
                 </table>`
-            stashCollection.innerHTML = stashString
+                stashCollection.innerHTML = stashString
             }}
         })
+    }
+
+    //IS THIS USED ANYWHERE??
+    document.querySelector(`#${record._id}`).onclick = function(e) {
+        console.log("click")
+        let chosenMaterialId = e.target.id
+        console.log(chosenMaterialId)
     }
 }
