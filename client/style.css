@@ -1,93 +1,17 @@
-body {
-    background-color: ivory;
-}
-.home_header {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.getAll_header {
-    margin-top: 40px;
-    margin: 0 auto;
-    text-align: center;
-}
-h1{
-    font-size: 80px;
-    margin: 20px 0 20px 0;
-}
-h3{
-    font-size: 25px;
-    margin: 50px 0 20px 0;
-}
-/* main {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    align-content: space-around;
-} */
-.home-image-container{
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    align-content: space-around;
-}
-#materials, #patterns, #projects {
-    background-color: white;
-    border-style: solid;
-    border-color: black;
-    border-width: 3px;
-    border-radius: 50%;
-    padding: 30px;
-    margin: 20px 30px 0 30px;
-}
-.navMain {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 25px;
-    background-color: lightgrey;
-}
-.navItem{
-    margin: 10px 20px 10px 20px;
-    align-items: center;
-    list-style-type: none;
-}
 .addButton{
     display: flex;
     justify-content: flex-end;
     margin-right: 5%;
 }
-#getAll_add_button{
-    width: 125px;
-    height: 40px;
-    font-size: 17px;
+body {
+    background-color: ivory;
 }
-#table-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 90px;
+#create_material{
+    padding: 5px;
+    margin: 15px auto;
+    width: 75px;
+    font-family: 'Maven Pro', sans-serif;
 }
-.records_data{
-    display: flex;
-    border: solid 2px;
-    margin: 20px;
-    padding: 15px;
-    width: 325px;
-    height: 225px;
-    text-wrap: wrap;
-    background-color: white;
-    vertical-align: baseline;
-}
-td{
-    vertical-align: top;
-    width: 160px;
-}
-
-#hidden{
-    display: none;
-}
-
 .createNewMaterialForm{
     display: flex;
     justify-content: center;
@@ -98,16 +22,120 @@ td{
     align-content: center;
     background-color: white;
 }
+.edit{
+    display: flex;
+    justify-content: flex-start;
+    border: solid 2px;
+    width: 300px;
+    height:300px;
+    margin: 100px auto;
+    align-content: flex-start;
+    background-color: white;
+}
+.editP {
+    border: solid 1px;
+    margin: 2px;
+    width: 230px;
+}
+#getAll_add_button{
+    width: 125px;
+    height: 40px;
+    font-size: 17px;
+    font-family: 'Maven Pro', sans-serif;
+}
+.getAll_header {
+    margin-top: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+h1{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    margin: 20px 0 20px 0;
+}
+h2{
+    font-family: 'Maven Pro', sans-serif;
+}
+h3{
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 25px;
+    margin: 50px 0 20px 0;
+}
+.home_header {
+    margin: 0 auto;
+    text-align: center;
+}
+.home-image-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    align-content: space-around;
+}
+input{
+    font-family: 'Maven Pro', sans-serif;
+}
+label{
+    font-family: 'Maven Pro', sans-serif;
+}
 li{
     align-items: center;
     list-style-type: none;
 }
-
+#materials, #patterns, #projects {
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 50%;
+    padding: 30px;
+    margin: 20px 30px 0 30px;
+}
+.navItem{
+    font-family: 'Maven Pro', sans-serif;
+    margin: 10px 20px 10px 20px;
+    align-items: center;
+    list-style-type: none;
+}
+.navMain {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    background-color: lightgrey;
+}
 #new_record_header{
+    margin: 5px;
     text-align: center;
 }
-#create_material{
-    padding: 5px;
-    margin: 15px auto;
-    width: 75px;
+p{
+    font-family: 'Maven Pro', sans-serif;
+}
+.records_data{
+    display: flex;
+    border: solid 2px;
+    margin: 20px;
+    padding: 15px;
+    width: 340px;
+    height: 225px;
+    text-wrap: wrap;
+    background-color: white;
+    vertical-align: baseline;
+    font-size: 17px;
+    font-family: 'Maven Pro', sans-serif;
+}
+#submitUpdate, #delete {
+    margin: 10px;
+    width: 100px;
+    font-size: 14px;
+    font-family: 'Maven Pro', sans-serif;
+}
+#table-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 90px;
+}
+td{
+    vertical-align: top;
+    width: 160px;
 }

@@ -4,13 +4,13 @@
 As a sewist I want to be able to see my planned projects and on-hand materials in one place in an organized, easy-to-access way.  This will create a record of my want-to-make projects and aggregate my materials so that I can either select from the patterns and materials I already have or make concious purchases of what I truly need.
 
 <h2>Overview</h2>
-The Sewist Database will be a personal respository application containing document records for sewing projects, "stash" fabrics, and purchased patterns.  The interactive front-end design will permit the user to input and manage project and materials information.  The input data will be deposited and stored in a database on the backend in a retrievable format.
+The Stash Database is a personal respository application containing document records for "stash" sewing projects, fabrics, and purchased patterns.  The interactive front-end design will permit the user to input and manage project and materials information.  The input data will be deposited and stored in a database on the backend in a retrievable format.
 
 <h2>Minimum Viable Product</h2>
-- <b>3 Related Data Entities</b>  The app should have document models for each projects, patterns, and material.<br>
-- <b>Polished User Interface</b>  The styling of the app will be aesthetically pleasing and utilize responsive design.<br>
-- <b>Full CRUD On All Backend Models</b>  The three planned models will have controller routes in place on the back end for create, read, update, & delete functioning<br>
-- <b>Create-Update-Delete Functionality</b> At least one model to have CUD functionality across the front and back end.<br>
+- <b>3 Related Data Entities</b>  The app has document models for each projects, patterns, and material.<br>
+- <b>Polished User Interface</b>  The styling of the app will be aesthetically pleasing utilitarian and make use of responsive design.<br>
+- <b>Full CRUD On All Backend Models</b>  The three planned models have controller routes in place on the back end for create, read, update, & delete functioning<br>
+- <b>Create-Update-Delete Functionality</b> One model, Material, currently has CUD functionality across the front and back end.<br>
 
 <h2>Stretch Goals</h2>
 - User-input images<br>

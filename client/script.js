@@ -31,6 +31,23 @@ document.querySelector(".home-image-container").onclick = function(e) {
     }
 }
 
+document.querySelector("#navBar").onclick = function(e) {
+    let navChoice = e.target.id
+    console.log(navChoice)
+    clearStashCollectionHTML()
+    if(navChoice === "materialsNav"){
+        getAllMaterialsPage("materials")
+    } else if (navChoice === "patternsNav") {
+        getAllPatternsPage("patterns")
+    } else {
+        getAllProjectsPage("projects")
+    }
+}
+
+function clearStashCollectionHTML() {
+    document.getElementById("table-container").innerHTML = ""
+}
+
 //GET ALL PATTERNS
 function getAllPatternsPage(path) {
 
@@ -49,6 +66,7 @@ function getAllPatternsPage(path) {
         console.log(records)
 
         //LOOP OVER PATTERN RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
+        stashString = ""
         records.data.forEach(record => {
             console.log(record)
             stashString +=
@@ -99,6 +117,7 @@ function getAllMaterialsPage(path) {
         materials = await axios.get(`${BASE_URL}/${route}`)
  
         //LOOP OVER MATERIALS RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
+        stashString = ""
         materials.data.forEach(record => {
             console.log(record)
             stashString +=
@@ -202,7 +221,7 @@ function getAllMaterialsPage(path) {
                 document.querySelector(".home").style.display = "none"
                 document.querySelector(".createNewMaterialForm").style.display = "none"
 
-                getAllPatternsPage("materials")
+                getAllMaterialsPage("materials")
         }
 
         //EVENT LISTENER FOR DELETE BUTTON.  SENDS CONFIRMATION POPUP.  IF CONFIRMED, EXECUTES AXIOS DELETE CALL PASSING IN RECORD(ID).
@@ -217,6 +236,8 @@ function getAllMaterialsPage(path) {
                 document.querySelector(".home").style.display = "none"
                 document.querySelector(".createNewMaterialForm").style.display = "none"
                 document.querySelector(".getAll").style.display = "block"
+
+                getAllMaterialsPage("materials")
             }
         }
     }
@@ -243,6 +264,7 @@ function getAllProjectsPage(path) {
         console.log(materialsRecords)
 
         //LOOP OVER PROJECTS RECORDS.DATA ARRAY. DISPLAY EACH RECORD'S PROPERTIES USEFUL TO USER BY INSERTING INTO HTML.
+        stashString = ""
         records.data.forEach(record => {
             console.log(record)
 
@@ -279,12 +301,5 @@ function getAllProjectsPage(path) {
                 stashCollection.innerHTML = stashString
             }}
         })
-    }
-
-    //IS THIS USED ANYWHERE??
-    document.querySelector(`#${record._id}`).onclick = function(e) {
-        console.log("click")
-        let chosenMaterialId = e.target.id
-        console.log(chosenMaterialId)
     }
 }

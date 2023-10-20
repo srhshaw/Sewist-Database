@@ -6,6 +6,12 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./script.js" type="module" diff></script>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@200&family=Gideon+Roman&family=Maven+Pro&family=Poiret+One&family=Raleway:wght@200;300;400&family=Train+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@200&family=Gideon+Roman&family=Maven+Pro&family=Poiret+One&family=Raleway:wght@200;300;400&family=Train+One&display=swap" rel="stylesheet">
     <title>Stash Sewing Database</title>
 </head>
 
@@ -13,12 +19,10 @@
     <div class = "home">
         <header class = "home_header">
             <h3>Welcome to your</h3>
-            <h1>Stash</h1>
+            <h1>STASH</h1>
         </header>
             <div class= "home-image-container" id = "home_images">
-                <!-- <a href = "./getAllPage/getAll.html"> -->
-                    <img id="materials" src="./assets/Material Icon.jpg"/>
-                <!-- </a> -->
+                <img id="materials" src="./assets/Material Icon.jpg"/>
                 <img id="patterns" src="./assets/Pattern Icon.jpg" />
                 <img id="projects" src="./assets/Project Icon.jpg" />
             </div>
@@ -26,12 +30,15 @@
 
     <div class = "getAll">
         <header class = "getAll_header">
-            <h1>Stash</h1>
+            <h1>STASH</h1>
+            <div id="navBar">
             <ul class="navMain">
-                <li class="navItem">Material</li>
-                <li class="navItem">Patterns</li>
-                <li class="navItem">Projects</li>
+                <li class="navItem" id="materialsNav">Material</li>
+                <li class="navItem" id="patternsNav">Patterns</li>
+                <li class="navItem" id="projectsNav">Projects</li>
             </ul>
+            </div>
+            </header>
         </header>
         <div class= "getAll_main">
             <div class="addButton">
@@ -78,20 +85,20 @@
         <ul>
             <li>
                 <label for="desc"><b>Description:</b> </label><br>
-                <p id="editDescription" contenteditable="true"></p><br>
+                <p class = "editP" id="editDescription" contenteditable="true"></p><br>
             </li>
             <li>
                 <label for="material_type"><b>Woven:</b> </label><br>
-                <p id="woven" contenteditable="true">Woven<br>
+                <p class = "editP" id="woven" contenteditable="true">Woven<br>
                 
             </li>
             <li>
                 <label for="length"><b>Length (yds):</b> </label><br>
-                <p type="number" id="lengthInYds" contenteditable="true"><br>
+                <p type="number" class = "editP" id="lengthInYds" contenteditable="true"><br>
             </li>
             <li>
                 <label for="width"><b>Width (inches):</b> </label><br>
-                <p type="number" id="widthInInches" contenteditable="true"><br>
+                <p type="number" class = "editP" id="widthInInches" contenteditable="true"><br>
             </li>
             <li>
                 <button type="submit" id = "submitUpdate">Submit Update</button>
