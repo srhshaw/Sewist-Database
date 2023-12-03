@@ -1,5 +1,7 @@
 # Stash-Sewist-Database
 
+<img src = "./Screenshot.png"></img>
+
 <h2>User Story</h2>
 As a sewist I want to be able to see my planned projects and on-hand materials in one place in an organized, easy-to-access way.  This will create a record of my want-to-make projects and aggregate my materials so that I can either select from the patterns and materials I already have or make concious purchases of what I truly need.
 

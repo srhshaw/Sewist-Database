@@ -150,7 +150,7 @@ function getAllMaterialsPage(path) {
     //EVENT LISTENER ON 'ADD NEW' BUTTON
     document.querySelector("#getAll_add_button").onclick = 
         function createNewMaterial() {
-
+            
         //HIDE HOMEPAGE, EDIT, & 'GET ALL' HTML
         document.querySelector(".home").style.display = "none"
         document.querySelector(".getAll").style.display = "none"
